@@ -73,7 +73,7 @@ prompt_pure_precmd() {
 	# git info
 	vcs_info
 
-	local prompt_pure_preprompt="\n%F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty`$prompt_pure_username%f%F{yellow}`prompt_pure_cmd_exec_time`%f"
+	local prompt_pure_preprompt="\n$STACKNAME %F{blue}%~%F{242}$vcs_info_msg_0_`prompt_pure_git_dirty`$prompt_pure_username%f%F{yellow}`prompt_pure_cmd_exec_time`%f"
 	print -P $prompt_pure_preprompt
 
 	# check async if there is anything to pull
@@ -120,7 +120,7 @@ prompt_pure_setup() {
 	zstyle ':vcs_info:git*' actionformats ' %b|%a'
 
 	# show username@host if logged in through SSH
-	[[ "$SSH_CONNECTION" != '' ]] && prompt_pure_username=' %n@%m'
+	prompt_pure_username=' %n@%m'
 
 	# show username@host if root, with username in white
 	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%F{242}@%m'
